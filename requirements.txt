@@ -5,3 +5,7 @@ itsdangerous==1.1.0
 Jinja2==2.11.3
 MarkupSafe==1.1.1
 Werkzeug==1.0.1
+django_scheduler==0.10.1
+Flask==2.2.2
+Requests==2.31.0
+schedule==1.2.0
