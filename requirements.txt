@@ -7,4 +7,4 @@ MarkupSafe==1.1.1
 Werkzeug==1.0.1
 django_scheduler==0.10.1
 Requests==2.31.0
-schedule==1.2.0
+APScheduler==3.10.1
