@@ -1,9 +1,8 @@
-import threading
 from flask import Flask
-import schedule
-import time
+from apscheduler.schedulers.background import BackgroundScheduler
 import requests
 import json
+
 
 app = Flask(__name__)
 
@@ -40,7 +39,7 @@ def send_questions():
 
     }
     # Send the payload to the Discord webhook
-    webhook_url = 'https://discord.com/api/webhooks/1110440444724256779/7aT9Eiv7zYC0tWPDFiTJHBcjYMewUUil0WBOlP6OoTj9RSTdeaNc8DQn4LCV01dBj-EJ'
+    webhook_url = 'https://discord.com/api/webhooks/1111594327739748393/Z5kw1xhDtJNk56iG9fMChbNtilT8R5Ar-9L5GvuSalkJmNzkk5OU0_6ne94DNjk79lhu'
     headers = {'Content-Type': 'application/json'}
     response = requests.post(webhook_url, headers=headers, json=payload)
     if response.status_code == 204:
@@ -60,7 +59,7 @@ def send_answers():
         ]
     }
     # Send the payload to the Discord webhook
-    webhook_url = 'https://discord.com/api/webhooks/1110440444724256779/7aT9Eiv7zYC0tWPDFiTJHBcjYMewUUil0WBOlP6OoTj9RSTdeaNc8DQn4LCV01dBj-EJ'
+    webhook_url = 'https://discord.com/api/webhooks/1111594327739748393/Z5kw1xhDtJNk56iG9fMChbNtilT8R5Ar-9L5GvuSalkJmNzkk5OU0_6ne94DNjk79lhu'
     headers = {'Content-Type': 'application/json'}
     response = requests.post(webhook_url, headers=headers, json=payload)
     if response.status_code == 204:
@@ -80,7 +79,7 @@ def send_answers121():
         ]
     }
     # Send the payload to the Discord webhook
-    webhook_url = 'https://discord.com/api/webhooks/1110440444724256779/7aT9Eiv7zYC0tWPDFiTJHBcjYMewUUil0WBOlP6OoTj9RSTdeaNc8DQn4LCV01dBj-EJ'
+    webhook_url = 'https://discord.com/api/webhooks/1111594327739748393/Z5kw1xhDtJNk56iG9fMChbNtilT8R5Ar-9L5GvuSalkJmNzkk5OU0_6ne94DNjk79lhu'
     headers = {'Content-Type': 'application/json'}
     response = requests.post(webhook_url, headers=headers, json=payload)
     if response.status_code == 204:
@@ -100,7 +99,7 @@ def send_answers221():
         ]
     }
     # Send the payload to the Discord webhook
-    webhook_url = 'https://discord.com/api/webhooks/1110440444724256779/7aT9Eiv7zYC0tWPDFiTJHBcjYMewUUil0WBOlP6OoTj9RSTdeaNc8DQn4LCV01dBj-EJ'
+    webhook_url = 'https://discord.com/api/webhooks/1111594327739748393/Z5kw1xhDtJNk56iG9fMChbNtilT8R5Ar-9L5GvuSalkJmNzkk5OU0_6ne94DNjk79lhu'
     headers = {'Content-Type': 'application/json'}
     response = requests.post(webhook_url, headers=headers, json=payload)
     if response.status_code == 204:
@@ -113,23 +112,18 @@ def increseCount():
     question_count += 3
     print(question_count)
 
-schedule.every().day.at('09:00').do(send_questions)
-schedule.every().day.at('16:00').do(send_answers)
-schedule.every().day.at('16:00').do(send_answers121)
-schedule.every().day.at('16:00').do(send_answers221)
-schedule.every().day.at('16:05').do(increseCount)
+scheduler = BackgroundScheduler(timezone='Asia/Kolkata')
 
+# Schedule the tasks
+scheduler.add_job(send_questions, 'cron', hour=12, minute=50)  # Run send_questions() every day at 09:00
+scheduler.add_job(send_answers, 'cron', hour=16, minute=0)  # Run send_answers() every day at 16:00
+scheduler.add_job(send_answers121, 'cron', hour=16, minute=0)  # Run send_answers121() every day at 16:00
+scheduler.add_job(send_answers221, 'cron', hour=16, minute=0)  # Run send_answers221() every day at 16:00
+scheduler.add_job(increseCount, 'cron', hour=16, minute=5)  # Run increseCount() every day at 16:05
 
-
-# Run the scheduled tasks
-def run_schedule():
-    while True:
-        schedule.run_pending()
-        time.sleep(1)
-
+# Run the scheduler
+scheduler.start()
 
 # Run the Flask application
 if __name__ == '__main__':
-    schedule_thread = threading.Thread(target=run_schedule)
-    schedule_thread.start()
     app.run()
