@@ -39,7 +39,7 @@ def send_questions():
 
     }
     # Send the payload to the Discord webhook
-    webhook_url = 'https://discord.com/api/webhooks/1111594327739748393/Z5kw1xhDtJNk56iG9fMChbNtilT8R5Ar-9L5GvuSalkJmNzkk5OU0_6ne94DNjk79lhu'
+    webhook_url = 'https://discord.com/api/webhooks/1110440444724256779/7aT9Eiv7zYC0tWPDFiTJHBcjYMewUUil0WBOlP6OoTj9RSTdeaNc8DQn4LCV01dBj-EJ'
     headers = {'Content-Type': 'application/json'}
     response = requests.post(webhook_url, headers=headers, json=payload)
     if response.status_code == 204:
@@ -59,7 +59,7 @@ def send_answers():
         ]
     }
     # Send the payload to the Discord webhook
-    webhook_url = 'https://discord.com/api/webhooks/1111594327739748393/Z5kw1xhDtJNk56iG9fMChbNtilT8R5Ar-9L5GvuSalkJmNzkk5OU0_6ne94DNjk79lhu'
+    webhook_url = 'https://discord.com/api/webhooks/1110440444724256779/7aT9Eiv7zYC0tWPDFiTJHBcjYMewUUil0WBOlP6OoTj9RSTdeaNc8DQn4LCV01dBj-EJ'
     headers = {'Content-Type': 'application/json'}
     response = requests.post(webhook_url, headers=headers, json=payload)
     if response.status_code == 204:
@@ -79,7 +79,7 @@ def send_answers121():
         ]
     }
     # Send the payload to the Discord webhook
-    webhook_url = 'https://discord.com/api/webhooks/1111594327739748393/Z5kw1xhDtJNk56iG9fMChbNtilT8R5Ar-9L5GvuSalkJmNzkk5OU0_6ne94DNjk79lhu'
+    webhook_url = 'https://discord.com/api/webhooks/1110440444724256779/7aT9Eiv7zYC0tWPDFiTJHBcjYMewUUil0WBOlP6OoTj9RSTdeaNc8DQn4LCV01dBj-EJ'
     headers = {'Content-Type': 'application/json'}
     response = requests.post(webhook_url, headers=headers, json=payload)
     if response.status_code == 204:
@@ -99,7 +99,7 @@ def send_answers221():
         ]
     }
     # Send the payload to the Discord webhook
-    webhook_url = 'https://discord.com/api/webhooks/1111594327739748393/Z5kw1xhDtJNk56iG9fMChbNtilT8R5Ar-9L5GvuSalkJmNzkk5OU0_6ne94DNjk79lhu'
+    webhook_url = 'https://discord.com/api/webhooks/1110440444724256779/7aT9Eiv7zYC0tWPDFiTJHBcjYMewUUil0WBOlP6OoTj9RSTdeaNc8DQn4LCV01dBj-EJ'
     headers = {'Content-Type': 'application/json'}
     response = requests.post(webhook_url, headers=headers, json=payload)
     if response.status_code == 204:
