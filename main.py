@@ -115,7 +115,7 @@ def increseCount():
 scheduler = BackgroundScheduler(timezone='Asia/Kolkata')
 
 # Schedule the tasks
-scheduler.add_job(send_questions, 'cron', hour=09, minute=0)  # Run send_questions() every day at 09:00
+scheduler.add_job(send_questions, 'cron', hour=9, minute=0)  # Run send_questions() every day at 09:00
 scheduler.add_job(send_answers, 'cron', hour=16, minute=0)  # Run send_answers() every day at 16:00
 scheduler.add_job(send_answers121, 'cron', hour=16, minute=0)  # Run send_answers121() every day at 16:00
 scheduler.add_job(send_answers221, 'cron', hour=16, minute=0)  # Run send_answers221() every day at 16:00
